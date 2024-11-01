@@ -21,6 +21,9 @@ class MethodManager:
             KeyError: If calculation type not found
         """
 
+        if not isinstance(calc_type, CalculationType):
+            raise ValueError(f"Unknown calculation type: {calc_type}")
+
         keywords = {
             CalculationType.SINGLE_POINT: ["! SP"],
             CalculationType.OPT: ["! OPT"],

@@ -20,7 +20,10 @@ class FunctionalManager:
         Raises:
             KeyError: If functional type not found
         """
-        
+
+        if not isinstance(functional, Functional):
+            raise ValueError(f"Unknown functional: {functional}")
+
         keywords = {
             Functional.B3LYP: ["! B3LYP"],
             Functional.PBE0: ["! PBE0"],
