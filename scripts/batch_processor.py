@@ -51,10 +51,11 @@ for mol in molecules:
         "--output-dir", str(mol_dir),
         "--functional", "PBE0",  # Hybrid functional good for geometry
         "--basis", "def2-TZVP",  # Triple-zeta basis set for accuracy
-        "--calc-type", "OPT",
+        "--dispersion", "D4",  # D3 dispersion correction
+        "--calc-type", "OPT-FREQ-GOAT",
         "--charge", str(mol["charge"]),
         "--multiplicity", str(mol["multiplicity"]),
-        '--n-procs', '4'
+        # '--n-procs', '4'
     ]
     
     # # Single point with higher level method

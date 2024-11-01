@@ -25,8 +25,8 @@ class FunctionalManager:
             raise ValueError(f"Unknown functional: {functional}")
 
         keywords = {
-            Functional.B3LYP: ["! B3LYP"],
-            Functional.PBE0: ["! PBE0"],
-            Functional.wB97X: ["! wB97X"],
+            Functional.B3LYP: ["B3LYP"],
+            Functional.PBE0: ["PBE0"],
+            Functional.wB97X: ["wB97X"],
         }
         return keywords.get(functional, [])
