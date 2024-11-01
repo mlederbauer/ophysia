@@ -1,0 +1,8 @@
+name: ophysia
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - rdkit=2024.3.2
+  - openbabel=3.1.1
+  - pip
