@@ -16,8 +16,20 @@ ORCA 6.0 and related scripts
 
 ## 🔥 Usage
 
-> TODO show in a very small amount of space the **MOST** useful thing your package can do.
-> Make it as short as possible! You have an entire set of docs for later.
+The goal of this project is to provide simple and easy-to-use scripts for generating ORCA input and scraping ORCA output files. Made to work with the ETH Euler Supercomputing cluster, can be extended to any other cluster (and local).
+
+```
+(ophysia) $ ophysia create \
+    --smiles "CCO" \
+    --charge 0 \
+    --multiplicity 1 \
+    --basis "def2-SVP" \
+    --functional "PBE0" \
+    --jobtype "opt" \
+    --memory 4 \
+    --cores 4 \
+    --time 24
+```
 
 ## 👩‍💻 Installation
 
