@@ -1,0 +1,10 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: cb25abb
+_src_path: gh:mlederbauer/copier-template
+author_email: mlederbauer@ethz.ch
+author_name: M. Lederbauer
+enforce_code_style: true
+github_org: mlederbauer
+package_name: ophysia
+project_name: ophysia
+short_description: ORCA 6.0 and related scripts
