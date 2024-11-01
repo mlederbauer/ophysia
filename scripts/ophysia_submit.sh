@@ -7,7 +7,7 @@ SCRATCH_DIR="/cluster/scratch/$USER/cco_analysis"
 # Job parameters
 WALLTIME="24:00:00"
 MEM_PER_CPU="4000"
-NTASKS="24"
+NTASKS="8"
 
 # Create necessary directories
 mkdir -p $HOME_DIR
@@ -69,7 +69,7 @@ cd "\$SCRATCH_WORK"
 /cluster/software/commercial/orca/6.0.0/x86_64/bin/orca molecule.inp > molecule.out
 
 # Copy results back to home directory
-cp *.gbw *.xyz *.out $HOME_DIR/$basename/
+cp *.gbw *.xyz *.out *.hess $HOME_DIR/$basename/
 
 # Cleanup scratch
 rm -rf "\$SCRATCH_WORK"

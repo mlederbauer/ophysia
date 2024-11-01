@@ -88,7 +88,7 @@ class BasisSetManager:
 
         try:
             info = cls._BASIS_INFO[basis]
-            return [f"! {info.keyword}"]
+            return [f"{info.keyword}"]
         except KeyError:
             raise ValueError(f"Unknown basis set: {basis}")
 
