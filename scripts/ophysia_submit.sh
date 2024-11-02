@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Directory setup
-HOME_DIR="/cluster/home/$USER/cco_analysis"
-SCRATCH_DIR="/cluster/scratch/$USER/cco_analysis"
+HOME_DIR="/cluster/home/$USER/cco_analysis_sp"
+SCRATCH_DIR="/cluster/scratch/$USER/cco_analysis_sp"
 
 # Job parameters
-WALLTIME="24:00:00"
+WALLTIME="4:00:00"
 MEM_PER_CPU="4000"
-NTASKS="8"
+NTASKS="2"
 
 # Create necessary directories
 mkdir -p $HOME_DIR
@@ -21,8 +21,8 @@ module load orca/6.0.0
 module load openmpi/4.1.6
 
 # Base directories
-HOME_DIR="$PWD/cco_analysis"
-SCRATCH_BASE="/cluster/scratch/$USER/cco_analysis"
+HOME_DIR="$PWD/cco_analysis_sp"
+SCRATCH_BASE="/cluster/scratch/$USER/cco_analysis_sp"
 
 # Ensure scratch base directory exists
 mkdir -p "$SCRATCH_BASE"
