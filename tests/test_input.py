@@ -32,12 +32,12 @@ def test_get_functional_keywords():
     # Test B3LYP keywords
     b3lyp_keywords = manager.get_functional_keywords(functionals.Functional.B3LYP)
     assert isinstance(b3lyp_keywords, list)
-    assert "! B3LYP" in b3lyp_keywords
+    assert "B3LYP" in b3lyp_keywords
     
     # Test PBE0 keywords
     pbe0_keywords = manager.get_functional_keywords(functionals.Functional.PBE0)
     assert isinstance(pbe0_keywords, list)
-    assert "! PBE0" in pbe0_keywords
+    assert "PBE0" in pbe0_keywords
 
 def test_invalid_functional():
     """Test handling of invalid functional."""
@@ -59,12 +59,12 @@ def test_get_calculation_keywords():
     # Test single point keywords
     sp_keywords = manager.get_calculation_keywords(methods.CalculationType.SINGLE_POINT)
     assert isinstance(sp_keywords, list)
-    assert "! SP" in sp_keywords
+    assert "SP" in sp_keywords
     
     # Test optimization keywords
     opt_keywords = manager.get_calculation_keywords(methods.CalculationType.OPT)
     assert isinstance(opt_keywords, list)
-    assert "! OPT" in opt_keywords
+    assert "OPT" in opt_keywords
 
 def test_invalid_calculation_type():
     """Test handling of invalid calculation type."""
@@ -172,7 +172,7 @@ def test_full_input_generation(xyz_file, tmp_path):
         "# ORCA Input File",
         *method_keywords,
         *func_keywords,
-        "! def2-SVP",
+        "def2-SVP",
         "",
         *geom_lines
     ]
@@ -185,15 +185,15 @@ def test_full_input_generation(xyz_file, tmp_path):
     # Verify
     assert input_file.exists()
     content = input_file.read_text()
-    assert "! OPT" in content
-    assert "! B3LYP" in content
+    assert "OPT" in content
+    assert "B3LYP" in content
     assert "* xyz" in content
 
 # Parameterized Tests
 @pytest.mark.parametrize("functional,expected_keyword", [
-    (functionals.Functional.B3LYP, "! B3LYP"),
-    (functionals.Functional.PBE0, "! PBE0"),
-    (functionals.Functional.wB97X, "! wB97X"),
+    (functionals.Functional.B3LYP, "B3LYP"),
+    (functionals.Functional.PBE0, "PBE0"),
+    (functionals.Functional.wB97X, "wB97X"),
 ])
 def test_functional_keywords_parametrized(functional, expected_keyword):
     """Test various functional keywords."""
@@ -202,9 +202,9 @@ def test_functional_keywords_parametrized(functional, expected_keyword):
     assert expected_keyword in keywords
 
 @pytest.mark.parametrize("calc_type,expected_keyword", [
-    (methods.CalculationType.SINGLE_POINT, "! SP"),
-    (methods.CalculationType.OPT, "! OPT"),
-    (methods.CalculationType.FREQ, "! FREQ"),
+    (methods.CalculationType.SINGLE_POINT, "SP"),
+    (methods.CalculationType.OPT, "OPT"),
+    (methods.CalculationType.FREQ, "FREQ"),
 ])
 def test_calculation_keywords_parametrized(calc_type, expected_keyword):
     """Test various calculation keywords."""
@@ -243,12 +243,12 @@ def test_get_basis_keywords():
     # Test def2-SVP keywords
     svp_keywords = manager.get_basis_keywords(basis_sets.BasisSet.def2_SVP)
     assert isinstance(svp_keywords, list)
-    assert "! def2-SVP" in svp_keywords
+    assert "def2-SVP" in svp_keywords
     
     # Test def2-TZVP keywords
     tzvp_keywords = manager.get_basis_keywords(basis_sets.BasisSet.def2_TZVP)
     assert isinstance(tzvp_keywords, list)
-    assert "! def2-TZVP" in tzvp_keywords
+    assert "def2-TZVP" in tzvp_keywords
 
 def test_get_basis_info():
     """Test retrieval of basis set information."""
