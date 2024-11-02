@@ -49,6 +49,7 @@ If you need jupyter lab, install it
 (ophysia) $ pip install jupyterlab
 ```
 
+In order to use openbabel to generate geometries from SMILES, you need to [install the Open Babel Executable for your operating system](https://open-babel.readthedocs.io/en/latest/Installation/install.html#install-binaries).
 
 ## 🛠️ Development installation
 
