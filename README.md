@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.png" width="200">
+  <img src="assets/ophysia.svg" width="200">
 </p>
 
 [![Code style: ruff-format](https://img.shields.io/badge/code%20style-ruff_format-6340ac.svg)](https://github.com/astral-sh/ruff)
@@ -12,12 +12,24 @@ ophysia
 <br>
 
 
-ORCA 6.0 and related scripts
+ORCA 6.0 and related scripts. The name of this project, OPHYSIA, is inspired by *Ophesia*, the synonym for Orca (Orcinus Orca, to be exact), our favorite computational chemistry software **and** a fascinating marine mammal. Did you know that orcas are found in all oceans of the world, from the coasts of Iceland and Alaska to Antarctica?
 
 ## 🔥 Usage
 
-> TODO show in a very small amount of space the **MOST** useful thing your package can do.
-> Make it as short as possible! You have an entire set of docs for later.
+The goal of this project is to provide simple and easy-to-use scripts for generating ORCA input and scraping ORCA output files. Made to work with the ETH Euler Supercomputing cluster, can be extended to any other cluster (and local).
+
+```
+(ophysia) $ ophysia create \
+    --smiles "CCO" \
+    --charge 0 \
+    --multiplicity 1 \
+    --basis "def2-SVP" \
+    --functional "PBE0" \
+    --jobtype "opt" \
+    --memory 4 \
+    --cores 4 \
+    --time 24
+```
 
 ## 👩‍💻 Installation
 
