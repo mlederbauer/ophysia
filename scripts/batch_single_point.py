@@ -2,7 +2,7 @@ import subprocess
 from pathlib import Path
 
 # Create directory structure
-base_dir = Path("cco_analysis")
+base_dir = Path("cco_analysis_sp")
 base_dir.mkdir(exist_ok=True)
 
 # Define molecules and their properties
@@ -44,34 +44,19 @@ for mol in molecules:
     mol_dir = base_dir / mol["name"]
     mol_dir.mkdir(exist_ok=True)
     
-    # Geometry optimization
-    opt_cmd = [
+    # Single point with higher level method
+    sp_cmd = [
         "ophysia", "create",
-        "--smiles", mol["smiles"],
+        "--xyz-file", str(mol_dir / f"molecule.xyz"),
         "--output-dir", str(mol_dir),
-        "--functional", "PBE0",  # Hybrid functional good for geometry
-        "--basis", "def2-TZVP",  # Triple-zeta basis set for accuracy
-        "--dispersion", "D4",  # D3 dispersion correction
-        "--calc-type", "OPT-FREQ-GOAT",
+        "--functional", "PBE0",  # More accurate functional with dispersion
+        "--basis", "def2-TZVPP",    # Larger basis set for final energy
+        "--dispersion", "D4",       # Dispersion
+        "--calc-type", "SP-CUSTOM",
         "--charge", str(mol["charge"]),
-        "--multiplicity", str(mol["multiplicity"]),
-        # '--n-procs', '4'
+        "--multiplicity", str(mol["multiplicity"])
     ]
     
-    # # Single point with higher level method
-    # sp_cmd = [
-    #     "ophysia", "create",
-    #     "--xyz-file", str(mol_dir / f"{mol['name']}_opt.xyz"),
-    #     "--output-dir", str(mol_dir),
-    #     "--functional", "wB97X-D3",  # More accurate functional with dispersion
-    #     "--basis", "def2-TZVPP",    # Larger basis set for final energy
-    #     "--calc-type", "SP",
-    #     "--charge", str(mol["charge"]),
-    #     "--multiplicity", str(mol["multiplicity"])
-    # ]
-    
     print(f"\nGenerating inputs for {mol['name']}:")
-    print(" ".join(opt_cmd))
-    subprocess.run(opt_cmd)
-    # print(" ".join(sp_cmd))
-    # subprocess.run(sp_cmd)
+    print(" ".join(sp_cmd))
+    subprocess.run(sp_cmd)
