@@ -1,6 +1,15 @@
 ophysia package
 ===============
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ophysia.input
+
+=======
 Submodules
 ----------
 

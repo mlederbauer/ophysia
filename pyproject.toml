@@ -9,7 +9,8 @@ requires-python = ">=3.8"
 license = {file = "LICENSE"}
 description = "ORCA 6.0 and related scripts"
 dependencies = [
-    # "rdkit",
+    "rdkit==2024.03.2",
+    # "openbabel==3.1.1"
 ]
 authors = [
     {name = "M. Lederbauer", email = "mlederbauer@ethz.ch"}
@@ -105,12 +106,13 @@ disallow_untyped_defs = true
 disable_error_code = ["import-untyped"]
 
 # Ignore certain missing imports
-# [[tool.mypy.overrides]]
-# module = "thirdparty.*"
-# disallow_untyped_defs = true
-# disable_error_code = ["attr-defined", "import-untyped"]
-# ignore_missing_imports = true
+[[tool.mypy.overrides]]
+module = "rdkit.*"
+ignore_missing_imports = true
 
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_calls = false  # This will allow untyped function calls in tests
 [tool.pytest.ini_options]
 testpaths = [
     "tests",
