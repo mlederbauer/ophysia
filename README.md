@@ -12,7 +12,7 @@ ophysia
 <br>
 
 
-ORCA 6.0 and related scripts
+ORCA 6.0 and related scripts. The name of this project, OPHYSIA, is inspired by *Ophesia*, the synonym for Orca (Orcinus Orca, to be exact), our favorite computational chemistry software **and** a fascinating marine mammal. Did you know that orcas are found in all oceans of the world, from the coasts of Iceland and Alaska to Antarctica?
 
 ## 🔥 Usage
 
