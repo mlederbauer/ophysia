@@ -8,6 +8,9 @@ data/*
 # gitignore template for Jupyter Notebooks
 # website: http://jupyter.org/
 
+data/*
+!data/*.MD
+
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 
