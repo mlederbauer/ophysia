@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.png" width="200">
+  <img src="assets/ophysia.svg" width="200">
 </p>
 
 [![Code style: ruff-format](https://img.shields.io/badge/code%20style-ruff_format-6340ac.svg)](https://github.com/astral-sh/ruff)
