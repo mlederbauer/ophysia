@@ -58,6 +58,10 @@ class BasisSetManager:
             keyword="def2-TZVP",
             description="Triple zeta valence polarized, good quality for production calculations"
         ),
+        BasisSet.def2_TZVPP: BasisSetInfo(
+            keyword="def2-TZVPP",
+            description="Triple zeta valence polarized with additional polarization functions"
+        ),
         BasisSet.def2_QZVP: BasisSetInfo(
             keyword="def2-QZVP",
             description="Quadruple zeta valence polarized, high accuracy calculations"
