@@ -1,8 +1,18 @@
 #!/bin/bash
 
+# Check if directory name is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 DIRNAME"
+    echo "Example: $0 my_calculation"
+    exit 1
+fi
+
+# Get directory name from command line argument
+CALC_DIR="$1"
+
 # Directory setup
-HOME_DIR="/cluster/home/$USER/cco_analysis_sp"
-SCRATCH_DIR="/cluster/scratch/$USER/cco_analysis_sp"
+HOME_DIR="/cluster/home/$USER/$CALC_DIR"
+SCRATCH_DIR="/cluster/scratch/$USER/$CALC_DIR"
 
 # Job parameters
 WALLTIME="4:00:00"
@@ -21,8 +31,8 @@ module load orca/6.0.0
 module load openmpi/4.1.6
 
 # Base directories
-HOME_DIR="$PWD/cco_analysis_sp"
-SCRATCH_BASE="/cluster/scratch/$USER/cco_analysis_sp"
+HOME_DIR="$PWD/$CALC_DIR"
+SCRATCH_BASE="/cluster/scratch/$USER/$CALC_DIR"
 
 # Ensure scratch base directory exists
 mkdir -p "$SCRATCH_BASE"
