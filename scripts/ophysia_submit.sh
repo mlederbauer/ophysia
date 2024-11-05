@@ -14,21 +14,9 @@ CALC_DIR="$1"
 HOME_DIR="/cluster/home/$USER/$CALC_DIR"
 SCRATCH_DIR="/cluster/scratch/$USER/$CALC_DIR"
 
-# Job parameters
-WALLTIME="4:00:00"
+# Default job parameters
 MEM_PER_CPU="4000"
 NTASKS="2"
-
-# Create necessary directories
-mkdir -p $HOME_DIR
-mkdir -p $SCRATCH_DIR
-
-# Load required modules
-module purge
-module load stack/2024-06
-module load gcc/12.2.0
-module load orca/6.0.0
-module load openmpi/4.1.6
 
 # Base directories
 HOME_DIR="$PWD/$CALC_DIR"
@@ -37,11 +25,25 @@ SCRATCH_BASE="/cluster/scratch/$USER/$CALC_DIR"
 # Ensure scratch base directory exists
 mkdir -p "$SCRATCH_BASE"
 
+# Load required modules
+module purge
+module load stack/2024-06
+module load gcc/12.2.0
+module load orca/6.0.0
+module load openmpi/4.1.6
+
 # Function to submit a job
 submit_orca_job() {
     local dir=$1
     local basename=$(basename "$dir")
     local scratch_dir="$SCRATCH_BASE/$basename"
+    
+    # Set walltime based on directory name
+    if [[ $basename == *go_sp ]]; then
+        WALLTIME="24:00:00"
+    else
+        WALLTIME="4:00:00"  # Default walltime
+    fi
     
     # Create scratch directory
     mkdir -p "$scratch_dir"
@@ -89,7 +91,7 @@ EOF
     chmod +x "run_job.sh"
     
     # Submit job
-    echo "Submitting job for $basename..."
+    echo "Submitting job for $basename (walltime: $WALLTIME)..."
     sbatch --export=SCRATCH_BASE=$SCRATCH_BASE "run_job.sh"
     
     # Return to base directory
