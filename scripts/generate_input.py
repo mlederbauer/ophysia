@@ -19,7 +19,7 @@ def load_molecule_config(config_path):
 def validate_molecule_config(molecules, input_type):
     """Validate molecule configurations based on input type."""
     if input_type == "smiles":
-        required_fields = {"name", "smiles", "charge", "multiplicity"}
+        required_fields = {"name", "smiles", "multiplicity"}
     else:  # xyz
         required_fields = {"name"}
     
@@ -39,7 +39,7 @@ def validate_molecule_config(molecules, input_type):
                 print(f"Error: smiles must be a string for molecule {mol['name']}")
                 sys.exit(1)
             try:
-                mol["charge"] = int(mol["charge"])
+                mol["charge"] = 1 if mol["name"].endswith("_cation") else 0
                 mol["multiplicity"] = int(mol["multiplicity"])
             except (ValueError, TypeError):
                 print(f"Error: charge and multiplicity must be integers for molecule {mol['name']}")
