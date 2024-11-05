@@ -56,8 +56,8 @@ def main(root_dir, base_molecule):
     output_file = f'{root_dir}/single_point_energies.csv'
     df.to_csv(output_file, index=False)
     print(f"Results saved to {output_file}")
-    print("\nFirst few entries:")
-    print(df.head())
+    print("\nEntries:")
+    print(df)
 
     # Generate new df that contains only pairs where exactly one molecule contains "cation"
     df_new = pd.DataFrame(columns=['pair', 'energy_diff', 'energy_diff_kcalpermol'])
