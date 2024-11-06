@@ -3,7 +3,7 @@
 # Check if directory name is provided
 if [ $# -ne 1 ]; then
     echo "Usage: $0 DIRNAME"
-    echo "Example: $0 my_calculation"
+    echo "Example: $0 GO/my_calculation"
     exit 1
 fi
 
@@ -15,7 +15,7 @@ HOME_DIR="/cluster/home/$USER/$CALC_DIR"
 SCRATCH_DIR="/cluster/scratch/$USER/$CALC_DIR"
 
 # Job parameters
-WALLTIME="4:00:00"
+WALLTIME="24:00:00"
 MEM_PER_CPU="4000"
 NTASKS="2"
 
@@ -40,6 +40,7 @@ mkdir -p "$SCRATCH_BASE"
 # Function to submit a job
 submit_orca_job() {
     local dir=$1
+    local full_path=$(realpath "$dir")
     local basename=$(basename "$dir")
     local scratch_dir="$SCRATCH_BASE/$basename"
     
@@ -69,8 +70,8 @@ SCRATCH_WORK="\$SCRATCH_BASE/$basename/\$SLURM_JOB_ID"
 mkdir -p "\$SCRATCH_WORK"
 
 # Copy input files to scratch
-cp $HOME_DIR/$basename/molecule.inp "\$SCRATCH_WORK/"
-cp $HOME_DIR/$basename/molecule.xyz "\$SCRATCH_WORK/"
+cp "$full_path/molecule.inp" "\$SCRATCH_WORK/"
+cp "$full_path/molecule.xyz" "\$SCRATCH_WORK/"
 
 # Change to scratch directory
 cd "\$SCRATCH_WORK"
@@ -79,7 +80,7 @@ cd "\$SCRATCH_WORK"
 /cluster/software/commercial/orca/6.0.0/x86_64/bin/orca molecule.inp > molecule.out
 
 # Copy results back to home directory
-cp *.gbw *.xyz *.out *.hess $HOME_DIR/$basename/
+cp *.gbw *.xyz *.out *.hess "$full_path/"
 
 # Cleanup scratch
 rm -rf "\$SCRATCH_WORK"
