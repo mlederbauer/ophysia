@@ -173,8 +173,8 @@ if __name__ == "__main__":
     base_dir = sys.argv[1]
     dir_prefix = sys.argv[2]    # e.g., 'gabaarg'
     molecule_id = sys.argv[3]   # e.g., 'gaba'
-    methods_dir_go = 'GO_B3LYP_def2SVP'
-    methods_dir_sp = 'SP_PBE0_def2TZVPP'
+    methods_dir_go = 'GO_PBE0_def2TZVP'
+    methods_dir_sp = 'SP_PBE0_def2QZVP'
     
     if not os.path.isdir(base_dir):
         print(f"Error: {base_dir} is not a valid directory")
