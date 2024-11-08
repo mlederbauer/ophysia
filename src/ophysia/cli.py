@@ -40,6 +40,19 @@ def create_input(args: argparse.Namespace) -> Path:
     output_path = Path(args.output_dir) / f"{xyz_path.stem}.inp"
     with open(output_path, 'w') as f:
         f.write('\n'.join(input_lines))
+    
+    # if method keywords contain 'OPT', append multi line string to .inp file
+
+    string = f"""
+$new_job
+! PBE0 D4 def2-QZVP SP RIJCOSX def2/J TIGHTSCF
+%base"pbe0"
+*xyzfile {args.charge} {args.multiplicity}
+    """
+
+    if 'OPT' in args.calc_type:
+        with open(output_path, 'a') as f:
+            f.write(string)
 
     return output_path
 
