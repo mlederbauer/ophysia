@@ -18,10 +18,11 @@ ORCA 6.0 and related scripts. The name of this project, OPHYSIA, is inspired by 
 
 The goal of this project is to provide simple and easy-to-use scripts for generating ORCA input and scraping ORCA output files. Made to work with the ETH Euler Supercomputing cluster, can be extended to any other cluster (and local).
 
+### Generate Input Files
+
 ```
 (ophysia) $ ophysia create \
     --smiles "CCO" \
-    --charge 0 \
     --multiplicity 1 \
     --basis "def2-SVP" \
     --functional "PBE0" \
@@ -30,6 +31,18 @@ The goal of this project is to provide simple and easy-to-use scripts for genera
     --cores 4 \
     --time 24
 ```
+
+If you want to create input files in batch, ...
+
+### Run calculations
+
+Use FileZilla or scp to transfer files to cluster with ORCA 6.0 installed.
+
+### Parse output
+
+## Inspect results
+
+trajectory file avogadro for geom opt
 
 ## 👩‍💻 Installation
 

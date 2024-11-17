@@ -8,8 +8,8 @@ Subpackages
    :maxdepth: 4
 
    ophysia.input
+   ophysia.output
 
-=======
 Submodules
 ----------
 
